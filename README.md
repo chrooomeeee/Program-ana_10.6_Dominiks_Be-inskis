@@ -1,1 +1,1 @@
-# Program-ana_10.6_Dominiks_Be-inskis
+# Programsana_10.6_Dominiks_Belinskis

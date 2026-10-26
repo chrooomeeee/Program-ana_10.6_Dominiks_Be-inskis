@@ -1,11 +1,11 @@
-[README.md](https://github.com/user-attachments/files/33236510/README.md)
-# Programesana_10.6_Dominiks_Belinskis
-
 # Programmēšanas un algoritmu ĢEDD
 
-**Datums:** 09.10.2026.  
-**Programmēšana I:** Gitea repozitorijs, versiju vēsture un Python pamatkonstrukcijas  
-**Algoritmu pamati:** vienkāršu algoritmu īstenošana Python programmās, izsekošana un testēšana
+**Autors:** Timurs Jeparskis  
+**Klase:** 10.6  
+**Datums:** 09.10.2026.
+
+**Programmēšana I:** Gitea repozitorijs, versiju vēsture un Python pamatkonstrukcijas.  
+**Algoritmu pamati:** vienkāršu algoritmu īstenošana Python programmās, izsekošana un testēšana.
 
 ## Sasniedzamie rezultāti
 
@@ -19,18 +19,19 @@ Es uzrakstu Python programmu, kas īsteno vienkāršu algoritmu, izsekoju tās m
 
 ## Šodienas darba secība
 
-1. stunda — repozitorija izveide un darba plūsmas demonstrācija.  
-2. stunda — README un failu struktūras sagatavošana.  
-3.–5. stunda — programmēšanas uzdevumi un regulāri `commit`.  
-6. stunda — Programmēšanas ĢEDD iesniegums.  
-7. stunda — algoritmiskie programmēšanas uzdevumi Python valodā.  
+1. stunda — repozitorija izveide un darba plūsmas demonstrācija.
+2. stunda — README un failu struktūras sagatavošana.
+3.–5. stunda — programmēšanas uzdevumi un regulāri `commit`.
+6. stunda — Programmēšanas ĢEDD iesniegums.
+7. stunda — algoritmiskie programmēšanas uzdevumi Python valodā.
 8. stunda — izvēlētās programmas pabeigšana, testi, izsekošana un Algoritmu pamatu ĢEDD iesniegums.
 
 ## Repozitorija struktūra
 
+Katram sāktajam uzdevumam ir savs `.py` fails. Nav jāizpilda visi deviņi uzdevumi.
+
 ```text
 README.md
-TESTI.md
 01_vecuma_grupa.py
 02_reizinasanas_tabula.py
 03_paroles_parbaude.py
@@ -42,13 +43,15 @@ TESTI.md
 09_burbulkartosana.py
 ```
 
+Pēc skolotāja norādījuma algoritma apraksts, izpildes izsekošana un testi ir šajā `README.md` failā.
+
 ## Darba noteikumi
 
 - Veic uzdevumus pēc kārtas, kamēr tie atbilst tavam līmenim.
 - Katru uzdevumu saglabā atsevišķā `.py` failā.
 - Pēc katra pabeigta darba posma izveido atsevišķu `commit` un veic `push`.
 - Tev nav jāpabeidz visi deviņi uzdevumi. Pirmie trīs pārbauda Python pamatprasmes. 4.–9. uzdevums palīdz noteikt, cik patstāvīgi proti veidot algoritmu.
-- Algoritmu ĢEDD jābūt redzamam gan Python kodā, gan failā `TESTI.md`.
+- Algoritmu ĢEDD jābūt redzamam gan Python kodā, gan README aprakstā un testos.
 - Ja tests atklāj kļūdu, pieraksti faktisko rezultātu un izlabo programmu. Atrasta un izskaidrota kļūda nav neveiksme.
 
 ## Git darba plūsma
@@ -60,6 +63,16 @@ git status
 git add .
 git commit -m "Īss un konkrēts paveiktā apraksts"
 git push
+```
+
+## Programmu palaišana
+
+Programmas palaiž terminālī ar Python, norādot faila nosaukumu.
+
+Piemērs:
+
+```bash
+python 04_summa_lidz_n.py
 ```
 
 ## 1. uzdevums — Vecuma grupa
@@ -231,65 +244,148 @@ Prasības:
 
 # Algoritmu pamatu ĢEDD
 
-Izvēlies vienu no 4.–9. uzdevuma. ĢEDD pierādījumiem jābūt divos failos:
+Izvēlētais uzdevums: **4. uzdevums — Summa no 1 līdz n**.
 
-1. darbojošs vai pamatoti iesākts `.py` fails ar algoritmu;
-2. `TESTI.md` ar izsekošanu un testiem.
+Algoritms ir failā `04_summa_lidz_n.py`.
+Pēc skolotāja norādījuma apraksts, izsekošana un testi ir šajā README.
 
 ## 1. Programmas apraksts
 
-Norādi faila nosaukumu, ievadi, sagaidāmo rezultātu un īsi paskaidro algoritma darbības.
+**Fails:** `04_summa_lidz_n.py`
+
+**Ievade:** pozitīvs vesels skaitlis `n`.
+
+**Sagaidāmais rezultāts:** visu skaitļu summa no `1` līdz `n`, ieskaitot `n`.
+
+Programma ar `input()` pieprasa skaitli un ar `int()` pārvērš ievadi par veselu skaitli.
+
+Nosacījums `n <= 0` pārbauda, vai ievadīta nulle vai negatīvs skaitlis. Šajā gadījumā programma parāda kļūdas paziņojumu.
+
+Ja skaitlis ir pozitīvs, programma piešķir `summa = 0`. Pēc tam `for` cikls pēc kārtas pieskaita skaitļus no `1` līdz `n`.
+
+`range(1, n + 1)` iekļauj arī skaitli `n`, jo beigu vērtība `n + 1` neietilpst diapazonā.
+
+Beigās programma parāda summu.
+
+Ja lietotājs ievada tekstu vai tukšu rindu, kļūdu apstrādā `except ValueError`.
+
+Piemērs: ja ievada `3`, rezultāts ir `6`, jo `1 + 2 + 3 = 6`.
+
+### Pārbaudītais kods
+
+```python
+try:
+    n = int(input("Ievadi pozitīvu veselu skaitli: "))
+
+    if n <= 0:
+        print("Kļūda: skaitlim jābūt lielākam par 0.")
+    else:
+        summa = 0
+
+        for i in range(1, n + 1):
+            summa = summa + i
+
+        print("Summa:", summa)
+
+except ValueError:
+    print("Kļūda: ievadi veselu skaitli.")
+```
 
 ## 2. Izpildes izsekošana
 
-Izvēlies vienu konkrētu ievadi un pieraksti mainīgo vērtības pa soļiem.
+Izvēlētā ievade: `3`.
 
-```markdown
 | Solis | Nosacījums | Mainīgie pirms | Veiktā darbība | Mainīgie pēc | Izvade |
-|------:|------------|-----------------|----------------|----------------|--------|
-| 0     | —          |                 | Sākums         |                |        |
-| 1     |            |                 |                |                |        |
-| 2     |            |                 |                |                |        |
-```
+|------:|------------|----------------|----------------|---------------|--------|
+| 0 | — | — | Ievada skaitli 3 | n = 3 | — |
+| 1 | n <= 0: nē | n = 3 | Izpilda else un piešķir summa = 0 | n = 3, summa = 0 | — |
+| 2 | Ciklā i = 1 | n = 3, summa = 0 | summa = 0 + 1 | n = 3, i = 1, summa = 1 | — |
+| 3 | Ciklā i = 2 | n = 3, i = 1, summa = 1 | summa = 1 + 2 | n = 3, i = 2, summa = 3 | — |
+| 4 | Ciklā i = 3 | n = 3, i = 2, summa = 3 | summa = 3 + 3 | n = 3, i = 3, summa = 6 | — |
+| 5 | Cikls beidzies | n = 3, i = 3, summa = 6 | Izvada summu | n = 3, i = 3, summa = 6 | Summa: 6 |
+
+Gala rezultāts ir `6`.
 
 ## 3. Testa piemēri
 
-Izveido vismaz četrus atšķirīgus testus.
+Ar MI palīdzību tika palaista iepriekš redzamā koda kopija ar sešām dažādām ievadēm. Tabulā norādīti iegūtie rezultāti pēc ievades pieprasījuma.
 
-```markdown
 | Testa veids | Ievade | Sagaidāmais rezultāts | Faktiskais rezultāts | Tests izturēts? |
 |-------------|--------|-----------------------|---------------------|-----------------|
-| Tipisks     |        |                       |                     |                 |
-| Robežgadījums |      |                       |                     |                 |
-| Tukša vai nederīga ievade | |                 |                     |                 |
-| Papildu tests |      |                       |                     |                 |
-```
+| Tipisks | 5 | Summa: 15 | Summa: 15 | Jā |
+| Robežgadījums | 1 | Summa: 1 | Summa: 1 | Jā |
+| Nederīga ievade | 0 | Kļūda: skaitlim jābūt lielākam par 0. | Kļūda: skaitlim jābūt lielākam par 0. | Jā |
+| Papildu tests | -2 | Kļūda: skaitlim jābūt lielākam par 0. | Kļūda: skaitlim jābūt lielākam par 0. | Jā |
+| Tukša ievade | Tukša rinda | Kļūda: ievadi veselu skaitli. | Kļūda: ievadi veselu skaitli. | Jā |
+| Nederīga ievade | abc | Kļūda: ievadi veselu skaitli. | Kļūda: ievadi veselu skaitli. | Jā |
+
+Visos sešos testos faktiskais rezultāts sakrita ar sagaidāmo rezultātu.
 
 ## 4. Kļūda, pretpiemērs vai uzlabojums
 
-Ja tests atklāj kļūdu, pieraksti ievadi, sagaidāmo rezultātu, faktisko rezultātu, kļūdas cēloni un labojumu.
+### Teksts skaitļa vietā
 
-Ja programma visus testus iztur, izvēlies agrāku kļūdainu `commit` vai paskaidro, kura ievade radītu kļūdu bez vienas no tavām pārbaudēm.
+**Pretpiemērs:** lietotājs ievada `abc`.
 
-**Ieteiktais commit:** `Pievienots algoritms un tā testi`
+**Sagaidāmais rezultāts:** saprotams kļūdas paziņojums.
+
+**Rezultāts bez kļūdas apstrādes:** programma beigtos ar `ValueError` kļūdu.
+
+**Cēlonis:** `int()` nevar pārvērst tekstu `abc` par veselu skaitli.
+
+**Risinājums:** izmantot `try` un `except ValueError`.
+
+Pārbaudītajā programmā šī kļūda tiek apstrādāta, un programma parāda:
+
+```text
+Kļūda: ievadi veselu skaitli.
+```
+
+Tā pati pārbaude apstrādā arī tukšu ievadi.
+
+### Nulle vai negatīvs skaitlis
+
+Programma pārbauda nosacījumu `n <= 0`.
+
+Bez šīs pārbaudes, ievadot `0`, cikls nenotiktu un programma izvadītu `Summa: 0`.
+
+Taču uzdevumā ir prasīts pozitīvs skaitlis. Tāpēc programma ievadei `0` vai negatīvam skaitlim parāda:
+
+```text
+Kļūda: skaitlim jābūt lielākam par 0.
+```
+
+**Ieteiktais commit:** `Pievienots algoritma apraksts, izsekošana un testi README`
 
 ## Programmēšanas ĢEDD iesniegšanas pārbaude
 
-- [ ] repozitorijs atveras Gitea;
-- [ ] repozitorijā ir README un sāktie `.py` faili;
-- [ ] programmās redzams `if`, `for` un `while` lietojums;
-- [ ] programmas ir palaistas un pārbaudītas;
-- [ ] versiju vēsturē ir vismaz trīs jēgpilni `commit`;
-- [ ] jaunākā versija nosūtīta ar `push`;
-- [ ] repozitorija saite iesniegta skolotājam.
+Atzīmē tikai faktiski izpildītos punktus.
+
+- [ ] Repozitorijs atveras skolotāja norādītajā platformā, un skolotājs tam var piekļūt.
+- [ ] Repozitorijā ir README un sāktie `.py` faili.
+- [ ] Programmās redzams `if`, `for` un `while` lietojums.
+- [ ] Programmas ir palaistas un pārbaudītas.
+- [ ] Versiju vēsturē ir vismaz trīs jēgpilni `commit`.
+- [ ] Jaunākā versija nosūtīta ar `push`.
+- [ ] Repozitorija saite iesniegta skolotājam.
+- [ ] Aizpildīta Programmēšanas pašvērtējuma daļa.
 
 ## Algoritmu pamatu ĢEDD iesniegšanas pārbaude
 
-- [ ] repozitorijā ir vismaz viens 4.–9. uzdevuma `.py` fails;
-- [ ] algoritms darbojas vai ir skaidri norādīta atrastā kļūda;
-- [ ] kodā izmantots cikls, nosacījums un mainīgo vērtību atjaunināšana;
-- [ ] failā `TESTI.md` redzama izpildes izsekošana;
-- [ ] izveidoti vismaz četri atšķirīgi testi;
-- [ ] ir tipiska, robežas un tukša vai nederīga ievade;
-- [ ] izmaiņas saglabātas ar `commit` un `push`;
-- [ ] aizpildīts pašvērtējums.
+Atzīmē tikai faktiski izpildītos punktus.
+
+- [ ] Repozitorijā ir fails `04_summa_lidz_n.py`.
+- [ ] Saglabātā programma darbojas un atbilst README redzamajam kodam.
+- [ ] Kodā izmantots cikls, nosacījums un mainīgo vērtību atjaunināšana.
+- [ ] README redzama izpildes izsekošana.
+- [ ] Aprakstīti vismaz četri atšķirīgi testi.
+- [ ] Testos ir tipiska, robežas un tukša vai nederīga ievade.
+- [ ] Aprakstīts pretpiemērs un kļūdas apstrāde.
+- [ ] Izmaiņas saglabātas ar `commit` un `push`.
+- [ ] Aizpildīta Algoritmu pašvērtējuma daļa.
+
+## Izmantotā palīdzība
+
+Python koda un algoritma skaidrošanā, README sagatavošanā un koda kopijas pārbaudē izmantots ChatGPT.
+
+Sarunas saite vai sarunas kopija jāiesniedz skolotāja norādītajā veidā.
